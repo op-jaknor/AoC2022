@@ -7,3 +7,6 @@ excel
 
 ### Day 3
 haskell
+
+### Day 4
+rust (Really ugly)
