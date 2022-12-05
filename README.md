@@ -10,3 +10,6 @@ haskell
 
 ### Day 4
 rust (Really ugly)
+
+### Day 5
+Java
