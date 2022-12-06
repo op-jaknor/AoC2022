@@ -13,3 +13,6 @@ rust (Really ugly)
 
 ### Day 5
 Java
+
+### Day 6
+Java
