@@ -16,3 +16,6 @@ Java
 
 ### Day 6
 Java
+
+### Day 7
+Java
