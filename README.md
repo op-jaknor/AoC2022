@@ -25,3 +25,6 @@ Java
 
 ### Day 9
 Java
+
+### Day 10
+Java
