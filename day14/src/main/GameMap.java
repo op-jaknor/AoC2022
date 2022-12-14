@@ -20,33 +20,28 @@ public class GameMap {
     }
 
     public int calculateSandsDropped() {
-        while (dropOneSand()) {
+        while (!dropOneSand().equals(sandDroppingPosition)) {
 
         }
 
         return unitsOfSandDropped;
     }
 
-    private boolean dropOneSand() {
+    private Position dropOneSand() {
         final Position sandPosition = sandDroppingPosition.copyOf();
-        Optional<Position> restingPosition = findRestingPosition(sandPosition);
-        if (restingPosition.isPresent()) {
-            unitsOfSandDropped++;
-            return true;
-        } else {
-            return false;
-        }
+        unitsOfSandDropped++;
+        return findRestingPosition(sandPosition);
     }
 
-    private Optional<Position> findRestingPosition(final Position sandPosition) {
-        if (isMovable(sandPosition) && sandPosition.y <= lowestBlockedPosition.y) {
+    private Position findRestingPosition(final Position sandPosition) {
+        if (isMovable(sandPosition)) {
             return findRestingPosition(move(sandPosition));
         }
         if (atRest(sandPosition)) {
-            blockedPositions.add(sandPosition);
-            return Optional.of(sandPosition);
+            setBlocked(sandPosition);
+            return sandPosition;
         } else {
-            return Optional.empty();
+            throw new IllegalStateException();
         }
     }
 
@@ -82,10 +77,10 @@ public class GameMap {
     }
 
     private boolean isBlocked(final Position position) {
-        return blockedPositions.contains(position);
+        return position.y > lowestBlockedPosition.y+1 || blockedPositions.contains(position);
     }
 
     private boolean isFree(final Position position) {
-        return !blockedPositions.contains(position);
+        return !isBlocked(position);
     }
 }

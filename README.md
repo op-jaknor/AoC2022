@@ -28,3 +28,6 @@ Java
 
 ### Day 10
 Java
+
+### Day 14
+Java
